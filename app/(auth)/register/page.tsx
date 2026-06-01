@@ -26,7 +26,7 @@ export default function RegisterPage() {
       firebaseUser = cred.user
       await api.post('/users', { fullName, email, firebaseUuid: firebaseUser.uid })
       const token = await firebaseUser.getIdToken()
-      document.cookie = `firebaseToken=${token}; path=/; max-age=3600`
+      document.cookie = `firebaseToken=${token}; path=/; max-age=604800`
       router.push('/')
     } catch (e: any) {
       if (firebaseUser) await deleteUser(firebaseUser).catch(() => {})

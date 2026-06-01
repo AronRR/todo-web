@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { getListas, ListaResponse } from '@/lib/api/listas'
+import { getListaById, ListaResponse } from '@/lib/api/listas'
 import { getTodosByLista, createTodo, updateTodo, deleteTodo, TodoResponse, Priority } from '@/lib/api/todos'
 import TaskRow from '@/components/TaskRow'
 import TaskModal from '@/components/TaskModal'
@@ -24,8 +24,8 @@ export default function ListDetailPage() {
   const fetchAll = useCallback(async () => {
     try {
       setError('')
-      const [listas, todosData] = await Promise.all([getListas(), getTodosByLista(id)])
-      setLista(listas.find((l) => l.id === id) ?? null)
+      const [listaData, todosData] = await Promise.all([getListaById(id), getTodosByLista(id)])
+      setLista(listaData)
       setTodos(todosData)
     } catch {
       setError('No se pudieron cargar las tareas')

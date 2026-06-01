@@ -14,6 +14,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       if (!user) {
         router.replace('/login')
       } else {
+        user.getIdToken().then((token) => {
+          document.cookie = `firebaseToken=${token}; path=/; max-age=604800`
+        })
         setReady(true)
       }
     })

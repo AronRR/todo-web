@@ -20,7 +20,7 @@ export default function LoginPage() {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password)
       const token = await cred.user.getIdToken()
-      document.cookie = `firebaseToken=${token}; path=/; max-age=3600`
+      document.cookie = `firebaseToken=${token}; path=/; max-age=604800`
       router.push('/')
     } catch {
       setError('Credenciales incorrectas')

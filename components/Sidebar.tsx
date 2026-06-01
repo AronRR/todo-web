@@ -15,9 +15,13 @@ export default function Sidebar() {
   const router = useRouter()
 
   const handleLogout = async () => {
-    await signOut(auth)
-    document.cookie = 'firebaseToken=; path=/; max-age=0'
-    router.push('/login')
+    try {
+      await signOut(auth)
+      document.cookie = 'firebaseToken=; path=/; max-age=0'
+      router.push('/login')
+    } catch {
+      // silently ignore logout errors
+    }
   }
 
   return (

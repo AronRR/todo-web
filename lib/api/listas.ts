@@ -19,3 +19,6 @@ export const updateLista = (id: string, data: { name?: string; color?: string })
 
 export const deleteLista = (id: string): Promise<void> =>
   api.delete(`/listas/${id}`).then(() => undefined)
+
+export const getListaById = (id: string): Promise<ListaResponse> =>
+  api.get<ListaResponse>(`/listas/${id}`).then((r) => r.data)
