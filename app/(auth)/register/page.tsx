@@ -28,9 +28,9 @@ export default function RegisterPage() {
       const token = await firebaseUser.getIdToken()
       document.cookie = `firebaseToken=${token}; path=/; max-age=604800`
       router.push('/')
-    } catch (e: any) {
+    } catch (e) {
       if (firebaseUser) await deleteUser(firebaseUser).catch(() => {})
-      setError(e.response?.data || e.message || 'Error al registrar')
+      setError((e as any)?.response?.data || (e as Error)?.message || 'Error al registrar')
     } finally {
       setLoading(false)
     }

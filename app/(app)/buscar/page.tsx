@@ -51,7 +51,7 @@ export default function SearchPage() {
       )}
 
       {q && !loading && listasResults.length === 0 && todosResults.length === 0 && (
-        <p className="text-muted text-sm text-center mt-16">Sin resultados para "{query}"</p>
+        <p className="text-muted text-sm text-center mt-16">Sin resultados para &quot;{query}&quot;</p>
       )}
 
       {listasResults.length > 0 && (

@@ -1,16 +1,15 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { getListaById, ListaResponse } from '@/lib/api/listas'
-import { getTodosByLista, createTodo, updateTodo, deleteTodo, TodoResponse, Priority } from '@/lib/api/todos'
+import { getTodosByLista, createTodo, updateTodo, deleteTodo, TodoResponse } from '@/lib/api/todos'
 import TaskRow from '@/components/TaskRow'
 import TaskModal from '@/components/TaskModal'
 import DeleteModal from '@/components/DeleteModal'
 
 export default function ListDetailPage() {
   const { id } = useParams<{ id: string }>()
-  const router = useRouter()
 
   const [lista, setLista] = useState<ListaResponse | null>(null)
   const [todos, setTodos] = useState<TodoResponse[]>([])
