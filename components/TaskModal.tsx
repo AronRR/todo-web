@@ -35,7 +35,7 @@ export default function TaskModal({ initial, onSave, onClose }: Props) {
     if (!title.trim()) { setError('El título es obligatorio'); return }
     setSaving(true)
     try {
-      await onSave({ title: title.trim(), description: description.trim(), priority, dueDate: dueDate || undefined })
+      await onSave({ title: title.trim(), description: description.trim(), priority, dueDate: dueDate.length === 10 ? dueDate : undefined })
       onClose()
     } catch {
       setError('No se pudo guardar la tarea')
