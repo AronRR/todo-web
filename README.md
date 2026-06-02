@@ -36,7 +36,7 @@ Abrir http://localhost:3000
 
 ## Deploy
 
-Deployado en Vercel: [URL pública aquí]
+Deployado en Vercel: https://todo-web-git-master-aronrrs-projects.vercel.app
 
 Backend: https://backtodolist-ccu4.onrender.com
 
